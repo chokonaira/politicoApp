@@ -205,3 +205,16 @@ table th {
   font-size: 20px;
 }
 /* End========= Create government office ================== */
+
+/* Start=========Politician express interest================== */
+
+.interestForm{
+  background-color: beige;
+  margin-top: 40px;
+  padding: 20px 10px;
+  margin: auto;
+  width: 700px;
+  font-size: 20px;
+}
+
+/* End========= Politician express interest================== */

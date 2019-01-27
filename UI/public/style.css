@@ -194,3 +194,14 @@ table th {
   font-size: 17px;
 }
 /* End=========admin dash/delete party================== */
+/* Start=========Create government office================== */
+
+.createOffice {
+  background-color: beige;
+  margin-top: 40px;
+  padding: 20px 10px;
+  margin: auto;
+  width: 700px;
+  font-size: 20px;
+}
+/* End========= Create government office ================== */

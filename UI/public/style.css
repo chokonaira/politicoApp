@@ -73,7 +73,7 @@ a {
   width: 700px;
   font-size: 20px;
 }
-/* Start=========Create Political party================== */
+/* Start=========Create party================== */
 
 .createParty {
   background-color: beige;
@@ -83,4 +83,16 @@ a {
   width: 700px;
   font-size: 20px;
 }
-/* End=========index page, sign -in page================== */
+/* End========= Create party ================== */
+
+/* Start=========Edit party================== */
+
+.editParty {
+  background-color: beige;
+  margin-top: 40px;
+  padding: 20px 10px;
+  margin: auto;
+  width: 700px;
+  font-size: 20px;
+}
+/* End=========Edit party================== */

@@ -289,3 +289,178 @@ table th {
 }
 
 /* End=========User dashboard / view all political parties================== */
+/* Start=========User profile================== */
+
+.userProfile{
+  background-color: beige;
+  margin-top: 40px;
+  padding: 20px 10px;
+  margin: auto;
+  width: 700px;
+  font-size: 20px;
+}
+#userTable {
+  width: 100%;  
+}
+
+#userTable td, #userTable th {
+  padding: 2px;
+  font-size: 18px
+}
+
+#userTable th {
+  text-align: left;
+  background-color: white;
+  color: black;
+}
+/* End=========User profile ================== */
+
+/*START =============================MEDIA QUERIES===================*/
+@media(max-width: 900px){
+
+  #menu{
+    display: flex;
+    flex-direction: row;
+  
+  }
+  #navbar-img-index{
+    display: none;
+    margin: auto;
+  
+  }
+  #menu .e-interest{
+    font-size: 13px;
+    padding-bottom: 5px;
+  }
+  /*===============media sign in and sign up page==================== */
+  section input[type=text], input[type=password] {
+    width: 10%;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .cancelbtn, .signupbtn{
+    width: 100%;
+  }
+  .section {
+    background-color: white;
+    padding: 10px 10px;
+    margin: auto;
+    width: 450px;
+  }
+  /* ==============media for page where a user can view government offices============= */
+  .dash-body{
+    width: 70%;
+    margin: auto;
+  }
+  .dash-img-container{
+    width: 100%;
+    margin: auto;
+  }
+  /* =================media for page where user can vote politician of politicians =======================*/
+  #navbar-img-details{
+    display: none;
+    margin: auto;
+  }
+  /* =======media for express of interest for =================== */
+  #navbar-img-express{
+    display: none;
+    margin: auto;
+  }
+  .interestForm{
+    margin: auto;
+    width: 90%;
+    
+  }
+  
+  /* =======================Media for Admin can create a political office  */
+  #nav-image-office{
+    display: none;
+    float: right;
+  }
+  .createOffice{
+    margin: auto;
+    width: 90%;
+  }
+  
+  /* =========================Media for user can create political parties */
+  #navbar-img-party{
+    display: none;
+  }
+  .createParty{
+    margin: auto;
+    width: 90%;
+  }
+  
+  /* ===================user profile==================================== */
+  
+  #navbar-img-profile{
+    display: none;
+    float: right;
+  }
+  
+  .userProfile{
+    background-color: #32CD32;
+    margin: auto;
+    width: 90%;
+  
+  }
+  #userTable , #td, #th{
+    float: left;
+    margin: auto;
+    background-color: #f2f2f2;
+  }
+  
+  /* ==========================Media for admin can edit political party */
+  #navbar-img-edit{
+    display: none;
+  }
+  .editParty{
+    margin: auto;
+    width: 90%;
+  }
+  
+  /* =======================media for admin can edit or delete political party */
+  #navbar-img-admin{
+    display: none;
+  }
+  #admin-container {
+    width: 100%; 
+    margin:auto;
+  }
+  /* ==================large admin table============== */
+  .admin-table, thead, tbody, th, td, tr button{ 
+    display: block;
+  
+     
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    width: 10
+  }
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 2000%; 
+    background-color: #ffffff;
+  }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute,;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+  }
+  /* END=============================MEDIA QUERIES===================*/

@@ -218,3 +218,74 @@ table th {
 }
 
 /* End========= Politician express interest================== */
+
+/* Start=========User dashboard / view all political parties================== */
+
+.dash-body{
+  color: #006400;
+  margin: auto;
+  width: 1400px;
+  padding: 20px;
+  align-content: center;
+  align-items: center;
+  font-size: 17px;
+  border-color: black;
+}
+
+.dash-img-layout{
+  float: left;
+  margin: 65px;
+  width: 220px;
+  height: 460px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  align-items: center;
+}
+.dash-img-container{
+  width: 100%;
+  align-content: center;
+  border: solid green;
+  border-radius: 15px;
+}
+.dash-img-container::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.vote{
+  display: flex;
+  justify-content: center;  
+}
+#upVote{  
+  padding: 10px;
+}
+#downVote{  
+  padding: 10px;
+}
+.election-result{
+  background-color: #006400;
+  margin: 30px auto;
+  width: 1400px; 
+  height: 500px;
+  clear: both
+}
+.mission {
+  color: black;
+  margin: auto;
+  width: 900px;
+  padding: 50px;
+}
+
+.banner {
+  color: #006400;
+  margin: auto;
+  width: 900px;
+  padding: 20px;
+  align-content: center;
+  align-items: center;
+  font-size: 17px;
+  border-color: black;
+}
+
+/* End=========User dashboard / view all political parties================== */

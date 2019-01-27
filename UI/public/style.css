@@ -73,6 +73,69 @@ a {
   width: 700px;
   font-size: 20px;
 }
+input[type=text], input[type=password] {
+  width: 96%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid;
+  background: #f1f1f1;
+  font-size: 20px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #f1f1f1;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #98FB98;
+  margin-bottom: 25px;
+}
+
+button {
+  background-color: #FFDEAD;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 25px;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.cancelbtn, .signupbtn {
+  float: left;
+  justify-content: space-between;
+  width: 50%;
+}
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.table-container {
+  margin: 20px auto;
+  width: 1300px;
+  align-content: center;
+  align-items: center;
+  font-size: 17px;
+}
+/*End =========index page, sign -in page================== */
+
 /* Start=========Create party================== */
 
 .createParty {
@@ -96,3 +159,38 @@ a {
   font-size: 20px;
 }
 /* End=========Edit party================== */
+
+/* Start=========admin dash/delete party================== */
+
+table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 25px;
+  color: black;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: black;
+}
+.table-container {
+  margin: 20px auto;
+  width: 1300px;
+  align-content: center;
+  align-items: center;
+  font-size: 17px;
+}
+/* End=========admin dash/delete party================== */

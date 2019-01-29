@@ -128,6 +128,18 @@ button:hover {
   align-items: center;
   font-size: 17px;
 }
+
+.index h1 {
+  float: left;
+   color: green;
+    text-align: center; 
+    padding:8px; 
+    font-weight: bold;
+     border: solid green; 
+     margin: auto;
+      width: 500px;
+      border-radius: 15px;
+}
 /*End =========index page, sign -in page================== */
 
 /* Start=========Create party================== */
@@ -327,162 +339,119 @@ table th {
 /* End=========User profile ================== */
 
 /*START =============================MEDIA QUERIES===================*/
-@media(max-width: 300px){
-  .index{
-    font-size: 2px;
+@media(max-width: 360px){
+  body{
+    float: left;
+    width: 100%;
+    height: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: white;
+  }
+  #menu {
+    background-color: green;
+    width: 100%;   
+  }
+  #menu li{
+    float: left;;
+    font-size: 10px;
     
   }
-  #menu{
-    display: flex;
-    flex-direction: column;
-  
+  #menu li a {
+    font-size: 15px;
+    background: none;
+  }
+  .index{
+    width: 100%;
+  }
+  .index h1{
+    width: 90%;
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+  .section{
+    width: 90%;
+  }
+  form{
+    width: 90%;
   }
   #navbar-img-index{
     display: none;
-    margin: auto;
-  
   }
-  #menu .e-interest{
-    font-size: 13px;
-    padding-bottom: 5px;
+  #user-header{
+    background: none
   }
-  /*===============media sign in and sign up page==================== */
-  section input[type=text], input[type=password] {
-    width: 100%;
-    text-align: center;
-    font-size: 10px;
-  }
-  
-  .cancelbtn, .signupbtn{
-    width: 100%;
-  }
-  .section {
-    background-color: white;
-    padding: 10px 10px;
-    margin: auto;
-    width: 450px;
-  }
-  /* ==============media for page where a user can view government offices============= */
   .dash-body{
-    width: 70%;
-    margin: auto;
+    width: 100%;
+  }
+  .dash-body h1{
+    width: 50%;
+  }
+  #admin-table{
+    width: 80%;
+  }
+  .admin-table, thead, tbody, th, td, tr button{ 
+    display: table;
+    width: 50%; 
+    font-size: 15px;    
+  }
+  
+  #seal h1, h2{
+    width: 80%
   }
   .dash-img-container{
+    width: 90%;
+  }
+  .footer{
     width: 100%;
-    margin: auto;
+    height: 100%;
   }
-  /* =================media for page where user can vote politician of politicians =======================*/
   #navbar-img-details{
+    display: none
+  }
+  #details-header{
+    background: none
+  }
+  .dash-hi{
+   margin: auto;
+  }
+  #admin-header{
+    background: none
+  }
+  
+  #navbar-img {
     display: none;
-    margin: auto;
+    background: none
   }
-  /* =======media for express of interest for =================== */
-  #navbar-img-express{
-    display: none;
-    margin: auto;
+  .table-container{
+    width: 100;
   }
-  .interestForm{
-    margin: auto;
-    width: 90%;
-    
-  }
-  
-  /* =======================Media for Admin can create a political office  */
-  #nav-image-office{
-    display: none;
-    float: right;
-  }
-  .createOffice{
-    margin: auto;
-    width: 90%;
-  }
-  
-  /* =========================Media for user can create political parties */
-  #navbar-img-party{
-    display: none;
-  }
-  .createParty{
-    margin: auto;
-    width: 90%;
-  }
-  
-  /* ===================user profile==================================== */
-  
-  #navbar-img-profile{
-    display: none;
-    float: right;
-  }
-  
-  .userProfile{
-    margin: auto;
-    width: 90%;
-  
-  }
-  #userTable , #td, #th{
-    float: left;
-    margin: auto;
-    background-color: #f2f2f2;
-  }
-  
-  /* ==========================Media for admin can edit political party */
-  #navbar-img-edit{
-    display: none;
-  }
-  .editParty{
-    margin: auto;
-    width: 90%;
-  }
-  
-  /* =======================media for admin can edit or delete political party */
-  #navbar-img-admin{
-    display: none;
-  }
-  #admin-container {
-    width: 100%; 
-    margin:auto;
-  }
-  /* ==================large admin table============== */
-  .admin-table, thead, tbody, th, td, tr button{ 
-    display: block;
-  
-     
-  }
-  
-  /* Hide table headers (but not display: none;, for accessibility) */
-  thead tr { 
-   
+  #dashhh{
+    margin-top: 20px;
     width: 100%
   }
-  
-  td { 
-    /* Behave  like a "row" */
-    border: none;
-    border-bottom: 1px solid #eee; 
-    position: relative;
-    ; 
-    background-color: #ffffff;
+  #table-container{
+    width: 100%;
   }
-  
-  td:before { 
-    /* Now like a table header */
-    position: absolute,;
-    /* Top/left values mimic padding */
-    top: 6px;
-    left: 6px;
-    width: 45%; 
-    padding-right: 10px; 
-    white-space: wrap;
+  .header{
+    width: 100%;
+  }
+  .createParty{
+    width: 80%;
+  }
+  .createOffice{
+    width: 80%;
+  }
+  .createOffice{
+    width: 80%;
+  }
+  .interestForm{
+    width: 80%;
+  }
+  .editParty{
+    width: 80%;
   }
 
-  .banner {
-    height: 20vh;
-    
-  }
   
-  
-  .banner img {
-    height : 100%;
-    width: 20%;
-  }
-  }
+}
+
   /* END=============================MEDIA QUERIES===================*/

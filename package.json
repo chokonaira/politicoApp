@@ -1,0 +1,33 @@
+{
+  "name": "politicoapp",
+  "version": "1.0.0",
+  "description": "Politico enables citizens give their mandate to politicians running for different government offices while building trust in the process through transparency.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js --exec babel-node --"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chokonaira/politicoApp.git"
+  },
+  "author": "Henry Okonkwo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chokonaira/politicoApp/issues"
+  },
+  "homepage": "https://github.com/chokonaira/politicoApp#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-env": "^2.4.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "eslint": "^5.12.1",
+    "jasmine": "^3.3.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
+}

@@ -14,7 +14,7 @@
   <div class="top">
     <div class="header">
 
-      <a href="#"><img src="./public/images/header/p-4.jpg" alt="header image" class="navbar-img" id="navbar-img-express"></a>
+      <a href="../index.html"><img src="./public/images/header/p-4.jpg" alt="header image" class="navbar-img" id="navbar-img-express"></a>
 
       <ul id="menu">
         <li><a href="profile.html" style="background-color:#f44336; color:white"><span class="nav-admin"></span>
@@ -22,42 +22,30 @@
         <li><a href="user.html">Dashboard</a></li>
         <!--<li><a href="sign-in.html">Sign In</a></li> -->
 
-        <li><a href="sign-in.html">Logout</a></li>
+        <li><a href="../index.html">Logout</a></li>
       </ul>
 
       </header>
     </div>
     <div class="interestForm">
-      <h1 style="color: green; text-align: center; padding:8px; font-weight: bold; border: solid;border-radius: 15px">Expression
+      <h1 style="color: green; text-align: center; padding:8px; border: solid;border-radius: 15px">Expression
         of Interest Form</h1><br /><br />
       <form method="post" action="/admin/add" enctype="multipart/form-data">
         <div class="createPartyForm">
-          <label>Full Name</label>
-          <input type="text" class="createPartyitems" name="title" placeholder="e.g Henry Okonkwo">
-        </div>
+            <label>Political Office Title</label>
+            <input type="text" class="createPartyitems" name="service" placeholder="e.g Office of the President">
+          </div>       
+          <div class="createPartyForm">
+            <label>State</label>
+            <input type="text" class="createPartyitems" name="client" placeholder="e.g Lagos State">
+          </div>
         <div class="createPartyForm">
           <label>Political Party Name</label>
           <input type="text" class="createPartyitems" name="service" placeholder="e.g All Progressive Congress">
         </div>
         <div class="createPartyForm">
-          <label>Party Membership Number</label>
+          <label>Membership Number</label>
           <input type="text" class="createPartyitems" name="service" placeholder="e.g APC12345678">
-        </div>
-        <div class="createPartyForm">
-          <label>Political Office Title</label>
-          <input type="text" class="createPartyitems" name="service" placeholder="e.g Office of the President">
-        </div>
-        <div class="createPartyForm">
-          <label>Level of Government</label>
-          <input type="text" class="createPartyitems" name="service" placeholder="e.g Federal or State">
-        </div>
-        <div class="createPartyForm">
-          <label>Branch of Government</label>
-          <input type="text" class="createPartyitems" name="client" placeholder="e.g Executive or Legislaive">
-        </div>
-        <div class="createPartyForm">
-          <label>State of Origin</label>
-          <input type="text" class="createPartyitems" name="client" placeholder="e.g Lagos State">
         </div>
         <div class="createPartyForm">
           <label>Email Address</label>

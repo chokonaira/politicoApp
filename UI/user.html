@@ -14,68 +14,77 @@
 <body>
   <div class="header">
 
-    <a href="#"><img src="./public/images/header/p-4.jpg" alt="header image" class="navbar-img" id="navbar-img-index"></a>
+    <a href="../README.md"><img src="./public/images/header/p-4.jpg" alt="header image" class="navbar-img" id="navbar-img-index"></a>
 
     <ul id="menu">
       <li><a href="profile.html" style="background-color:#f44336; color:#ffffff"><span class="nav-admin"></span>
           user@gmail.com</a></li>
-      <li class="e-interest"><a href="interestForm.html">Express Interest</a></li>
+      <li class="e-interest"><a href="interestForm.html">Run for office</a></li>
       <!--<li><a href="sign-in.html">Sign In</a></li> -->
 
-      <li><a href="sign-in.html">Logout</a></li>
+      <li><a href="../index.html">Logout</a></li>
     </ul>
 
   </div>
 
   <div class="dash-body">
-    <h1 style="color: black; text-align: center; padding:8px; font-weight: bold; border: solid green; color: green; border-radius: 15px">Welcome
-      to the Voters Dashboard</h1><br />
-    <h2 style="text-align: center; color:black">View all Accredited Political Parties. </h2><br /><br />
+      <h1 class="dash-body" style="color: black; text-align: center; padding:5px; font-weight: bold; background-color: #34A853; font-size: 30px; border-radius: 15px"> User Dashboard</h1>
 
-    <div>
-      <table id="admin-table">
-        <thead>
-          <tr>
-            <th>Party Logo</th>
-            <th>Party Name</th>
-            <th>Acronym</th>
+    <div class="table-container">
+      
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img class="small-img" src="./public/images/dashboard/apc.jpg"></td>
-            <td>All Progressive Congress</td>
-            <td>APC</td>
-
-          </tr>
-          <tr>
-            <td><img class="small-img" src="./public/images/dashboard/pdp.jpg"></td>
-            <td>People Democratic Party</td>
-            <td>PDP</td>
-
-          </tr>
-          <tr>
-            <td><img class="small-img" src="./public/images/dashboard/acpn.jpg"></td>
-            <td>Allied Congress Party of Nigeria</td>
-            <td>ACPN</td>
-
-          </tr>
-          <tr>
-            <td><img class="small-img" src="./public/images/dashboard/aac.jpg"></td>
-            <td>African Action Congress</td>
-            <td>AAC</td>
-
-          </tr>
-          <tr>
-            <td><img class="small-img" src="./public/images/dashboard/sdp.jpg"></td>
-            <td>Social Democratic Party</td>
-            <td>SDP</td>
-
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <div>
+          <table id="admin-table">
+            <thead>
+              <tr>
+                <th>Logo</th>
+                <th>Party Name</th>
+                <th>Acronym</th>
+                <th>Action</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img class="small-img" src="./public/images/dashboard/apc.jpg"></td>
+                <td>All Progressive Congress</td>
+                <td>APC</td>
+                <td> <a href="editParty.html"><button style="background-color:#98FB98" type="button" class="">Edit</button></a></td>
+                <td><button style="background-color:#f44336" type="button" class="">Delete</button></td>
+              </tr>
+              <tr>
+                <td><img class="small-img" src="./public/images/dashboard/pdp.jpg"></td>
+                <td>People Democratic Party</td>
+                <td>PDP</td>
+                <td> <a href="editParty.html"><button style="background-color:#98FB98" type="button" class="">Edit</button></a></td>
+                <td><button style="background-color:#f44336" type="button" class="">Delete</button></td>
+              </tr>
+              <tr>
+                <td><img class="small-img" src="./public/images/dashboard/acpn.jpg"></td>
+                <td>Allied Congress Party of Nigeria</td>
+                <td>ACPN</td>
+                <td> <a href="editParty.html"><button style="background-color:#98FB98" type="button" class="">Edit</button></a></td>
+                <td><button style="background-color:#f44336" type="button" class="">Delete</button></td>
+              </tr>
+              <tr>
+                <td><img class="small-img" src="./public/images/dashboard/aac.jpg"></td>
+                <td>African Action Congress</td>
+                <td>AAC</td>
+                <td> <a href="editParty.html"><button style="background-color:#98FB98" type="button" class="">Edit</button></a></td>
+                <td><button style="background-color:#f44336" type="button" class="">Delete</button></td>
+              </tr>
+              <tr>
+                <td><img class="small-img" src="./public/images/dashboard/sdp.jpg"></td>
+                <td>Social Democratic Party</td>
+                <td>SDP</td>
+                <td> <a href="editParty.html"><button style="background-color:#98FB98" type="button" class="">Edit</button></a></td>
+                <td><button style="background-color:#f44336" type="button" class="">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
   </div>
 
 
@@ -166,7 +175,7 @@
         <h3 style="text-align: center; color: black">08069537560 </h3>
       </div>
 
-      </footer>
+    </div>
 </body>
 
 

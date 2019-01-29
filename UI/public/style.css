@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-body {
+body{
   margin: auto;
   width: 100%;
   height: 100%;
@@ -79,12 +79,12 @@ input[type=text], input[type=password] {
   margin: 5px 0 22px 0;
   display: inline-block;
   border: 1px solid;
-  background: #f1f1f1;
+  background: #ffffff;
   font-size: 20px;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  background-color: #f1f1f1;
+  background-color: #ffffff;
   outline: none;
 }
 
@@ -94,9 +94,9 @@ hr {
 }
 
 button {
-  background-color: #FFDEAD;
+  background-color: #34A853;
   color: black;
-  padding: 14px 20px;
+  padding: 7px 15px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
@@ -109,15 +109,9 @@ button:hover {
   opacity: 1;
 }
 
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
 .cancelbtn, .signupbtn {
   float: left;
-  justify-content: space-between;
-  width: 50%;
+  width: 100%;
 }
 
 
@@ -144,7 +138,7 @@ button:hover {
   padding: 20px 10px;
   margin: auto;
   width: 600px;
-  font-size: 20px;
+  font-size: 25px;
 }
 /* End========= Create party ================== */
 
@@ -156,7 +150,7 @@ button:hover {
   padding: 20px 10px;
   margin: auto;
   width: 600px;
-  font-size: 20px;
+  font-size: 25px;
 }
 /* End=========Edit party================== */
 
@@ -184,7 +178,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #34A853;
   color: black;
 }
 .table-container {
@@ -202,7 +196,7 @@ table th {
   padding: 20px 10px;
   margin: auto;
   width: 600px;
-  font-size: 20px;
+  font-size: 25px;
 }
 /* End========= Create government office ================== */
 
@@ -222,7 +216,18 @@ table th {
 /* Start=========User dashboard / view all political parties================== */
 
 .dash-body{
-  color: #006400;
+  color: #34A853;
+  margin: auto;
+  width: 1000px;
+  padding: 20px;
+  align-content: center;
+  align-items: center;
+  font-size: 17px;
+  border-color: black;
+  margin-bottom: 50px;
+}
+/* .banner{
+  color: #34A853;
   margin: auto;
   width: 1000px;
   padding: 20px;
@@ -231,6 +236,18 @@ table th {
   font-size: 17px;
   border-color: black;
   margin-bottom: 110px;
+} */
+
+.banner {
+  width: 100%;
+  height: 80vh;
+  
+}
+
+
+.banner img {
+  height : 100%;
+  width: 100%;
 }
 
 .dash-img-layout{
@@ -246,7 +263,7 @@ table th {
 .dash-img-container{
   width: 100%;
   align-content: center;
-  border: solid green;
+  border: solid #34A853;
   border-radius: 15px;
 }
 
@@ -266,7 +283,7 @@ table th {
   padding: 10px;
 }
 .election-result{
-  background-color: #006400;
+  background-color: #34A853;
   margin: 30px auto;
   width: 1400px; 
   height: 500px;
@@ -279,16 +296,7 @@ table th {
   padding: 50px;
 }
 
-.banner {
-  color: #006400;
-  margin: auto;
-  width: 900px;
-  padding: 20px;
-  align-content: center;
-  align-items: center;
-  font-size: 17px;
-  border-color: black;
-}
+
 
 /* End=========User dashboard / view all political parties================== */
 /* Start=========User profile================== */
@@ -319,11 +327,14 @@ table th {
 /* End=========User profile ================== */
 
 /*START =============================MEDIA QUERIES===================*/
-@media(max-width: 900px){
-
+@media(max-width: 300px){
+  .index{
+    font-size: 2px;
+    
+  }
   #menu{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   
   }
   #navbar-img-index{
@@ -337,7 +348,7 @@ table th {
   }
   /*===============media sign in and sign up page==================== */
   section input[type=text], input[type=password] {
-    width: 10%;
+    width: 100%;
     text-align: center;
     font-size: 10px;
   }
@@ -403,7 +414,6 @@ table th {
   }
   
   .userProfile{
-    background-color: #32CD32;
     margin: auto;
     width: 90%;
   
@@ -440,10 +450,8 @@ table th {
   
   /* Hide table headers (but not display: none;, for accessibility) */
   thead tr { 
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-    width: 10
+   
+    width: 100%
   }
   
   td { 
@@ -451,7 +459,7 @@ table th {
     border: none;
     border-bottom: 1px solid #eee; 
     position: relative;
-    padding-left: 2000%; 
+    ; 
     background-color: #ffffff;
   }
   
@@ -463,7 +471,18 @@ table th {
     left: 6px;
     width: 45%; 
     padding-right: 10px; 
-    white-space: nowrap;
+    white-space: wrap;
+  }
+
+  .banner {
+    height: 20vh;
+    
+  }
+  
+  
+  .banner img {
+    height : 100%;
+    width: 20%;
   }
   }
   /* END=============================MEDIA QUERIES===================*/

@@ -3,7 +3,7 @@ import partyController from '../controller/parties'
 
 const router = express.Router()
 
-router.post('/', partyController.createParty)
+router.post('/api/v1/parties', partyController.createParty)
 
 
 export default router

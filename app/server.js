@@ -12,7 +12,7 @@ const PORT = 3000;
 
 
 app.get('/', (req, res) => res.send('Hello!! Please navigate to `/api/v1/parties` or `/api/v1/offices`'))
-app.use('/api/v1/parties', partyRoutes)
+app.use('/', partyRoutes)
 
 app.listen(PORT, ()=> {
   console.log(`Server is running on port ${PORT}`)

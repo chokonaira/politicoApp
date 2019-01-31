@@ -16,11 +16,14 @@ const partyController = {
       //now format response to be sent
       const response = {"status": 201, "data": [partyDb[id - 1]]}
       return res.send(partyDb)
-      console.log('server is running');
     }
     
 
-  }
+  },
+
+  getParties(req, res){
+    return res.send({"status": 200, "data": partyDb})
+  },
 
 }
 

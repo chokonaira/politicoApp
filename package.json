@@ -4,6 +4,7 @@
   "description": "An API endpoint that performs a CRUD operation for politicoApp",
   "main": "server.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint ./app --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app/server.js --exec babel-node --"
   },
@@ -18,17 +19,19 @@
   },
   "homepage": "https://github.com/chokonaira/politicoApp_api#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-cli": "^6.26.0",
     "babel-env": "^2.4.1",
-    "body-parser": "^1.18.3",
     "eslint": "^5.12.1",
-    "express": "^4.16.4",
-    "mocha": "^5.2.0"
-  },
-  "devDependencies": {
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
   }
 }

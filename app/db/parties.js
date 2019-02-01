@@ -1,12 +1,12 @@
 const partyDb = [
   {
     id: 1,
-    name: 'APC',
-    logoUrl: 'http://apc.jpg',
+    name: 'CPP',
+    logoUrl: 'http://cpprs.jpg',
     hqAddress: 'Abuja',
   },
   {
-    id: 1,
+    id: 2,
     name: 'APC',
     logoUrl: 'http://apc.jpg',
     hqAddress: 'Abuja',
@@ -16,7 +16,7 @@ const partyDb = [
     name: 'PDP',
     logoUrl: 'http://pdp.jpg',
     hqAddress: 'Kaduna',
-  }
-] 
+  },
+];
 
-export default partyDb 
+export default partyDb;

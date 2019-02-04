@@ -4,9 +4,11 @@
   "description": "An API endpoint that performs a CRUD operation for politicoApp",
   "main": "server.js",
   "scripts": {
+    "build": "babel app --out-dir ./dist --source-maps",
+    "dev": "nodemon ./app/server.js",
     "lint": "./node_modules/.bin/eslint ./app --fix",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app/server.js --exec babel-node --"
+    "start": "npm run build && node ./dist/server.js ",
+    "test": "mocha --compilers js:@babel/register app/test/*.js --exit"
   },
   "repository": {
     "type": "git",
@@ -23,11 +25,13 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "babel-cli": "^6.26.0",
-    "babel-env": "^2.4.1",
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",

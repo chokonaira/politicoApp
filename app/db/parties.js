@@ -17,6 +17,6 @@ const partyDb = [
     logoUrl: 'http://pdp.jpg',
     hqAddress: 'Kaduna',
   },
-];
+]; 
 
 export default partyDb;

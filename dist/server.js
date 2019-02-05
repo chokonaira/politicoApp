@@ -20,10 +20,7 @@ app.use(_bodyParser.default.urlencoded({
   extended: true
 }));
 app.use(_bodyParser.default.json());
-var PORT = 3000;
-app.get('/', function (req, res) {
-  res.send('<html><body><h1>POLITICO is running on port 3000</h1></body></html>');
-});
+var PORT = process.env.PORT || 3000;
 app.use('/api/v1', _parties.default);
 app.use('/api/v1', _offices.default);
 app.listen(PORT, function () {

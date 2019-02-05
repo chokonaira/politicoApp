@@ -4,11 +4,10 @@
   "description": "An API endpoint that performs a CRUD operation for politicoApp",
   "main": "server.js",
   "scripts": {
-    "build": "babel app --out-dir ./dist --source-maps",
+    "build": "babel app --out-dir ./dist --source-maps", 
     "dev": "nodemon ./app/server.js",
     "lint": "./node_modules/.bin/eslint ./app --fix",
-    "start:dev": "npm run build && node ./dist/server.js ",
-    "start": "babel-node ./app/server.js ",
+    "start": "npm run build && node ./dist/server.js ",
     "test": "mocha --compilers js:@babel/register app/test/*.js --exit"
   },
   "repository": {

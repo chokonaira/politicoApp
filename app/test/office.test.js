@@ -43,5 +43,19 @@ describe('Offices endpoints', () => {
         });
     });
   });
+  describe('GET /api/v1/offices', () => {
+    it('should get all offices', (done) => {
+      chai.request(server)
+        .get('/api/v1/offices')
+        .end((req, res) => {
+          res.body.should.be.a('object');
+          res.body.status.should.equal(200);
+          res.body.should.include.keys('data');
+          res.body.data.should.be.a('array');
+          done();
+        });
+    });
+  });
+  
 
 });

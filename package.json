@@ -7,8 +7,8 @@
     "build": "babel app --out-dir ./dist --source-maps",
     "dev": "nodemon ./app/server.js",
     "lint": "./node_modules/.bin/eslint ./app --fix",
-    "start": "npm run build && node ./dist/server.js ",
-    "start:dev": "babel-node ./app/server.js ",
+    "start:dev": "npm run build && node ./dist/server.js ",
+    "start": "babel-node ./app/server.js ",
     "test": "mocha --compilers js:@babel/register app/test/*.js --exit"
   },
   "repository": {

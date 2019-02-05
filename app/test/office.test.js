@@ -56,6 +56,33 @@ describe('Offices endpoints', () => {
         });
     });
   });
-  
+  describe('GET /api/v1/offices/:id', () => {
+    const invalidId = 'xx';
+    const validId = 1;
+    it('should return an office not found response', (done) => {
+      chai.request(server)
+        .get(`/api/v1/offices/${invalidId}`)
+        .end((req, res) => {
+          res.body.should.be.a('object');
+          res.body.status.should.equal(404);
+          res.body.should.include.keys('error');
+          res.body.error.should.equal(`Office with id ${invalidId} not found`);
+          done();
+        });
+    });
+
+    it('should return a single office record', (done) => {
+      chai.request(server)
+        .get(`/api/v1/offices/${validId}`)
+        .end((req, res) => {
+          res.body.should.be.a('object');
+          res.body.status.should.equal(200);
+          res.body.should.include.keys('data');
+          res.body.data.should.be.a('array');
+          res.body.data.length.should.equal(1);
+          done();
+        });
+    });
+  });
 
 });

@@ -16,7 +16,15 @@ const officeController = {
   getOffices(req, res) {
     return res.send({ status: 200, data: officeDb });
   },
-
+  getOffice(req, res) {
+    const { officeId } = req.params;
+    for (let i = 0; i < officeDb.length; i += 1) {
+      if (officeDb[i].id === parseInt(officeId, 10)) {
+        return res.send({ status: 200, data: [officeDb[i]] });
+      }
+    }
+    return res.send({ status: 404, error: `Office with id ${officeId} not found` });
+  }
  
 };
 

@@ -12,6 +12,10 @@ const officeController = {
     const response = { status: 201, data: [officeDb[id - 1]] };
     return res.send(response);
   },
+  
+  getOffices(req, res) {
+    return res.send({ status: 200, data: officeDb });
+  },
 
  
 };

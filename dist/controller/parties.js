@@ -11,127 +11,368 @@ var _db = _interopRequireDefault(require("../models/db"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var partyController = {
-  createParty: function createParty(req, res) {
-    // use object destructuring to get values contained in body
-    var _req$body = req.body,
-        name = _req$body.name,
-        hqAddress = _req$body.hqAddress,
-        logoUrl = _req$body.logoUrl; // Validation: check if any of the required fields is empty of not provided
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-    if (!name || !hqAddress || !logoUrl) {
-      return res.send({
-        status: 400,
-        error: 'Kindly enter all fields'
-      });
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var partyController = {
+  createParty: function () {
+    var _createParty = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee(req, res) {
+      var _req$body, name, hqAddress, logoUrl, dbClient, text, values, party, rows;
+
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _req$body = req.body, name = _req$body.name, hqAddress = _req$body.hqAddress, logoUrl = _req$body.logoUrl;
+              _context.next = 3;
+              return _db.default.connect();
+
+            case 3:
+              dbClient = _context.sent;
+              _context.prev = 4;
+              text = 'INSERT INTO parties (name, hqAddress, logoUrl) VALUES ($1, $2, $3) RETURNING * ';
+              values = [name, hqAddress, logoUrl];
+              _context.next = 9;
+              return dbClient.query({
+                text: text,
+                values: values
+              });
+
+            case 9:
+              party = _context.sent;
+
+              if (!party.rowCount) {
+                _context.next = 13;
+                break;
+              }
+
+              rows = party.rows;
+              return _context.abrupt("return", res.status(201).json({
+                status: 201,
+                data: [rows[0]]
+              }));
+
+            case 13:
+              return _context.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
+
+            case 16:
+              _context.prev = 16;
+              _context.t0 = _context["catch"](4);
+              return _context.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
+
+            case 19:
+              _context.prev = 19;
+              dbClient.release();
+              return _context.finish(19);
+
+            case 22:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this, [[4, 16, 19, 22]]);
+    }));
+
+    function createParty(_x, _x2) {
+      return _createParty.apply(this, arguments);
     }
 
-    var text = 'INSERT INTO party (name, hqAddress, logourl) VALUES ($1, $2, $3) RETURNING * ';
-    var values = [name, hqAddress, logoUrl];
+    return createParty;
+  }(),
+  getParties: function () {
+    var _getParties = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee2(req, res) {
+      var dbClient, text, party, rows;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _db.default.connect();
 
-    _db.default.query(text, values).then(function (party) {
-      return res.status(201).send({
-        data: [party.rows[0]]
-      });
-    }).catch(function (err) {
-      return res.send(err);
-    });
-  },
-  getParties: function getParties(req, res) {
-    var text = 'SELECT * FROM party';
+            case 2:
+              dbClient = _context2.sent;
+              _context2.prev = 3;
+              text = 'SELECT * FROM parties';
+              _context2.next = 7;
+              return dbClient.query({
+                text: text
+              });
 
-    _db.default.query(text).then(function (party) {
-      return res.send({
-        status: 200,
-        data: party.rows[0]
-      });
-    });
-  },
-  getParty: function getParty(req, res) {
-    // get the partyId from the url sent via GET
-    var partyId = req.params.partyId; // loop through all the parties inside the partyDb
+            case 7:
+              party = _context2.sent;
 
-    for (var i = 0; i < _parties.default.length; i += 1) {
-      // get the party with id that equals the partyId sent via url
-      // use parseInt to convert string of number to a real number in base 10
-      if (_parties.default[i].id === parseInt(partyId, 10)) {
-        // return that party
-        return res.send({
-          status: 200,
-          data: [_parties.default[i]]
-        });
-      }
-    } // if partyId sent doesnt match party id, send a party not found error
+              if (!party.rowCount) {
+                _context2.next = 11;
+                break;
+              }
 
+              rows = party.rows;
+              return _context2.abrupt("return", res.status(200).json({
+                status: 200,
+                data: [rows]
+              }));
 
-    return res.send({
-      status: 404,
-      error: "Party with id ".concat(partyId, " not found")
-    });
-  },
-  updateParty: function updateParty(req, res) {
-    // get partyId from url sent via GET e.g politico.com/api/v1/parties/10
-    var partyId = req.params.partyId; // get values of all the input field sent via POST
+            case 11:
+              return _context2.abrupt("return", res.status(400).json({
+                status: 400,
+                data: []
+              }));
 
-    var _req$body2 = req.body,
-        name = _req$body2.name,
-        hqAddress = _req$body2.hqAddress,
-        logoUrl = _req$body2.logoUrl; // return validation error if any of the expected fields are missing
+            case 14:
+              _context2.prev = 14;
+              _context2.t0 = _context2["catch"](3);
+              return _context2.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
 
-    if (!name || !hqAddress || !logoUrl) {
-      return res.send({
-        status: 400,
-        error: 'All fields are required'
-      });
-    } // loop through the party db and get the record
-    // that has the same id as the one supplied in the url
+            case 17:
+              _context2.prev = 17;
+              dbClient.release();
+              return _context2.finish(17);
 
+            case 20:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, this, [[3, 14, 17, 20]]);
+    }));
 
-    for (var i = 0; i < _parties.default.length; i += 1) {
-      if (_parties.default[i].id === parseInt(partyId, 10)) {
-        // if found, update its properties with the new ones entered on the form
-        _parties.default[i].name = name;
-        _parties.default[i].hqAddress = hqAddress;
-        _parties.default[i].logoUrl = logoUrl; // return Success response
+    function getParties(_x3, _x4) {
+      return _getParties.apply(this, arguments);
+    }
 
-        return res.send({
-          status: 200,
-          data: [_parties.default[i]]
-        });
-      }
-    } // if not found, return not found error
+    return getParties;
+  }(),
+  getParty: function () {
+    var _getParty = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee3(req, res) {
+      var partyId, dbClient, text, values, party, rows;
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              partyId = req.params.partyId;
+              _context3.next = 3;
+              return _db.default.connect();
 
+            case 3:
+              dbClient = _context3.sent;
+              _context3.prev = 4;
+              text = 'SELECT * FROM parties WHERE id = $1 LIMIT 1';
+              values = [partyId];
+              _context3.next = 9;
+              return dbClient.query({
+                text: text,
+                values: values
+              });
 
-    return res.send({
-      status: 404,
-      error: "Party with id of ".concat(partyId, " not found")
-    });
-  },
-  deleteParty: function deleteParty(req, res) {
-    // get partyId from url sent via GET e.g politico.com/api/v1/parties/10
-    var partyId = req.params.partyId; // loop through the party db and get the record
-    // that has the same id as the one supplied in the url
+            case 9:
+              party = _context3.sent;
 
-    for (var i = 0; i < _parties.default.length; i += 1) {
-      if (_parties.default[i].id === parseInt(partyId, 10)) {
-        // if found, remove the record from the db and return Success response
-        _parties.default.splice(_parties.default[i].id - 1, 1);
+              if (!party.rowCount) {
+                _context3.next = 13;
+                break;
+              }
 
-        return res.send({
-          status: 204,
-          data: [{
-            message: 'Party deleted succesfully'
-          }]
-        });
-      }
-    } // if not found, return a not found error
+              rows = party.rows;
+              return _context3.abrupt("return", res.status(200).json({
+                status: 200,
+                data: [rows[0]]
+              }));
 
+            case 13:
+              return _context3.abrupt("return", res.status(400).json({
+                status: 400,
+                message: "No party with id: ".concat(partyId, " was found")
+              }));
 
-    return res.send({
-      status: 404,
-      error: "Party with id of ".concat(partyId, " not found")
-    });
-  }
+            case 16:
+              _context3.prev = 16;
+              _context3.t0 = _context3["catch"](4);
+              return _context3.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
+
+            case 19:
+              _context3.prev = 19;
+              dbClient.release();
+              return _context3.finish(19);
+
+            case 22:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, this, [[4, 16, 19, 22]]);
+    }));
+
+    function getParty(_x5, _x6) {
+      return _getParty.apply(this, arguments);
+    }
+
+    return getParty;
+  }(),
+  updateParty: function () {
+    var _updateParty = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee4(req, res) {
+      var partyId, _req$body2, name, logoUrl, hqAddress, dbClient, text, values, party, rows;
+
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              partyId = req.params.partyId;
+              _req$body2 = req.body, name = _req$body2.name, logoUrl = _req$body2.logoUrl, hqAddress = _req$body2.hqAddress;
+              _context4.next = 4;
+              return _db.default.connect();
+
+            case 4:
+              dbClient = _context4.sent;
+              _context4.prev = 5;
+              text = 'UPDATE parties SET name = $1, hqAddress = $2, logoUrl = $3 WHERE id = $4 RETURNING *';
+              values = [name, hqAddress, logoUrl, partyId];
+              _context4.next = 10;
+              return dbClient.query({
+                text: text,
+                values: values
+              });
+
+            case 10:
+              party = _context4.sent;
+
+              if (!party.rowCount) {
+                _context4.next = 14;
+                break;
+              }
+
+              rows = party.rows;
+              return _context4.abrupt("return", res.status(200).json({
+                status: 200,
+                data: [rows[0]]
+              }));
+
+            case 14:
+              return _context4.abrupt("return", res.status(500).json({
+                status: 500,
+                message: "Unable to update party"
+              }));
+
+            case 17:
+              _context4.prev = 17;
+              _context4.t0 = _context4["catch"](5);
+              return _context4.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
+
+            case 20:
+              _context4.prev = 20;
+              dbClient.release();
+              return _context4.finish(20);
+
+            case 23:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, this, [[5, 17, 20, 23]]);
+    }));
+
+    function updateParty(_x7, _x8) {
+      return _updateParty.apply(this, arguments);
+    }
+
+    return updateParty;
+  }(),
+  deleteParty: function () {
+    var _deleteParty = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee5(req, res) {
+      var partyId, dbClient, text, values, party, rows;
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              partyId = req.params.partyId;
+              _context5.next = 3;
+              return _db.default.connect();
+
+            case 3:
+              dbClient = _context5.sent;
+              _context5.prev = 4;
+              text = 'DELETE FROM parties WHERE id = $1 RETURNING id';
+              values = [partyId];
+              _context5.next = 9;
+              return dbClient.query({
+                text: text,
+                values: values
+              });
+
+            case 9:
+              party = _context5.sent;
+
+              if (!party.rowCount) {
+                _context5.next = 13;
+                break;
+              }
+
+              rows = party.rows;
+              return _context5.abrupt("return", res.status(203).json({
+                status: 200,
+                data: [{
+                  message: 'Party deleted succesfully'
+                }]
+              }));
+
+            case 13:
+              return _context5.abrupt("return", res.status(400).json({
+                status: 400,
+                message: "No party with id: ".concat(partyId, " was found")
+              }));
+
+            case 16:
+              _context5.prev = 16;
+              _context5.t0 = _context5["catch"](4);
+              return _context5.abrupt("return", res.status(500).json({
+                status: 500,
+                message: 'Internal server error'
+              }));
+
+            case 19:
+              _context5.prev = 19;
+              dbClient.release();
+              return _context5.finish(19);
+
+            case 22:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, this, [[4, 16, 19, 22]]);
+    }));
+
+    function deleteParty(_x9, _x10) {
+      return _deleteParty.apply(this, arguments);
+    }
+
+    return deleteParty;
+  }()
 };
 var _default = partyController;
 exports.default = _default;

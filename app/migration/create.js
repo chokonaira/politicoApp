@@ -17,7 +17,7 @@ const createUser = `Create TABLE IF NOT EXISTS Users(
     console.log(err)
   })
 
-const createParty = `CREATE TABLE IF NOT EXISTS party(
+const createParty = `CREATE TABLE IF NOT EXISTS parties(
   id SERIAL PRIMARY KEY,
   name VARCHAR(225) not null,
   hqAddress VARCHAR(225) not null,
@@ -30,7 +30,7 @@ db.query(createParty).then((party)=>{
   console.log(err.stack)
 })
 
-const createOffice = `CREATE TABLE IF NOT EXISTS office(
+const createOffice = `CREATE TABLE IF NOT EXISTS offices(
   id SERIAL PRIMARY KEY,
   name VARCHAR(225) not null,
   type VARCHAR(225) not null
@@ -42,7 +42,7 @@ db.query(createOffice).then((office)=>{
   console.log(err)
 })
 
-const createCandidate = `CREATE TABLE IF NOT EXISTS candidate(
+const createCandidate = `CREATE TABLE IF NOT EXISTS candidates(
   id SERIAL PRIMARY KEY,
   candidate INT UNIQUE NOT NULL REFERENCES Users(id) ON DELETE CASCADE,
   office INT UNIQUE NOT null REFERENCES Office(id) ON DELETE CASCADE,

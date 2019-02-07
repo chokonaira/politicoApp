@@ -1,81 +1,108 @@
 import partyDb from '../db/parties';
+import db from '../models/db'
 
 const partyController = {
-  createParty(req, res) {
-    // use object destructuring to get values contained in body
+  async createParty(req, res) {
     const { name, hqAddress, logoUrl } = req.body;
-    // Validation: check if any of the required fields is empty of not provided
-    if (!name || !hqAddress || !logoUrl) {
-      return res.send({ status: 400, error: 'Kindly enter all fields' });
+    const dbClient = await db.connect()
+    try {
+      const text = 'INSERT INTO parties (name, hqAddress, logoUrl) VALUES ($1, $2, $3) RETURNING * '
+      const values = [name, hqAddress, logoUrl]
+      let party = await dbClient.query({ text, values })
+      if (party.rowCount) {
+        const { rows } = party
+        return res.status(201).json({
+          status: 201, data: [rows[0]],
+        });
+      }
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } catch (e) {
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } finally {
+      dbClient.release()
     }
-    // generate id
-    const id = partyDb.length + 1;
-    req.body.id = id;
-    // insert record into db
-    partyDb.push(req.body);
-    // now format response to be sent
-    const response = { status: 201, data: [partyDb[id - 1]] };
-    return res.send(response);
   },
 
-  getParties(req, res) {
-    // send all the parties inside the partyDb object as response
-    return res.send({ status: 200, data: partyDb });
+  async getParties(req, res) {
+    const dbClient = await db.connect()
+    try {
+      const text = 'SELECT * FROM parties'
+      let party = await dbClient.query({ text })
+      if (party.rowCount) {
+        const { rows } = party
+        return res.status(200).json({
+          status: 200, data: [rows],
+        });
+      }
+      return res.status(400).json({ status: 400, data: [] });
+    } catch (e) {
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } finally {
+      dbClient.release()
+    }
   },
 
-  getParty(req, res) {
-    // get the partyId from the url sent via GET
+  async getParty(req, res) {
     const { partyId } = req.params;
-    // loop through all the parties inside the partyDb
-    for (let i = 0; i < partyDb.length; i += 1) {
-      // get the party with id that equals the partyId sent via url
-      // use parseInt to convert string of number to a real number in base 10
-      if (partyDb[i].id === parseInt(partyId, 10)) {
-        // return that party
-        return res.send({ status: 200, data: [partyDb[i]] });
+    const dbClient = await db.connect()
+    try {
+      const text = 'SELECT * FROM parties WHERE id = $1 LIMIT 1'
+      const values = [partyId]
+      let party = await dbClient.query({ text, values })
+      if (party.rowCount) {
+        const { rows } = party
+        return res.status(200).json({
+          status: 200, data: [rows[0]],
+        });
       }
+      return res.status(400).json({ status: 400, message: `No party with id: ${partyId} was found` });
+    } catch (e) {
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } finally {
+      dbClient.release()
     }
-    // if partyId sent doesnt match party id, send a party not found error
-    return res.send({ status: 404, error: `Party with id ${partyId} not found` });
   },
-  updateParty(req, res) {
-    // get partyId from url sent via GET e.g politico.com/api/v1/parties/10
+  async updateParty(req, res) {
     const { partyId } = req.params;
-    // get values of all the input field sent via POST
-    const { name, hqAddress, logoUrl } = req.body;
-    // return validation error if any of the expected fields are missing
-    if (!name || !hqAddress || !logoUrl) {
-      return res.send({ status: 400, error: 'All fields are required' });
-    }
-    // loop through the party db and get the record
-    // that has the same id as the one supplied in the url
-    for (let i = 0; i < partyDb.length; i += 1) {
-      if (partyDb[i].id === parseInt(partyId, 10)) {
-        // if found, update its properties with the new ones entered on the form
-        partyDb[i].name = name;
-        partyDb[i].hqAddress = hqAddress;
-        partyDb[i].logoUrl = logoUrl;
-        // return Success response
-        return res.send({ status: 200, data: [partyDb[i]] });
+    const { name, logoUrl, hqAddress } = req.body
+    const dbClient = await db.connect()
+    try {
+      const text = 'UPDATE parties SET name = $1, hqAddress = $2, logoUrl = $3 WHERE id = $4 RETURNING *'
+      const values = [name, hqAddress, logoUrl, partyId]
+      let party = await dbClient.query({ text, values })
+      if (party.rowCount) {
+        const { rows } = party
+        return res.status(200).json({
+          status: 200, data: [rows[0]],
+        });
       }
+      return res.status(500).json({ status: 500, message: "Unable to update party" });
+    } catch (e) {
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } finally {
+      dbClient.release()
     }
-    // if not found, return not found error
-    return res.send({ status: 404, error: `Party with id of ${partyId} not found` });
   },
-  deleteParty(req, res) {
-    // get partyId from url sent via GET e.g politico.com/api/v1/parties/10
+  async deleteParty(req, res) {
+
     const { partyId } = req.params;
-    // loop through the party db and get the record
-    // that has the same id as the one supplied in the url
-    for (let i = 0; i < partyDb.length; i += 1) {
-      if (partyDb[i].id === parseInt(partyId, 10)) {
-        // if found, remove the record from the db and return Success response
-        partyDb.splice(partyDb[i].id - 1, 1);
-        return res.send({ status: 204, data: [{ message: 'Party deleted succesfully' }] });
+    const dbClient = await db.connect()
+    try {
+      const text = 'DELETE FROM parties WHERE id = $1 RETURNING id'
+      const values = [partyId]
+      let party = await dbClient.query({ text, values })
+      if (party.rowCount) {
+        const { rows } = party
+        return res.status(203).json({
+          status: 200, data: [{ message: 'Party deleted succesfully' }]
+        });
       }
+      return res.status(400).json({ status: 400, message: `No party with id: ${partyId} was found` });
+    } catch (e) {
+      return res.status(500).json({ status: 500, message: 'Internal server error' });
+    } finally {
+      dbClient.release()
     }
-    // if not found, return a not found error
-    return res.send({ status: 404, error: `Party with id of ${partyId} not found` });
   },
 };
 

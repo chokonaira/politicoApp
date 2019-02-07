@@ -22,7 +22,8 @@ app.use(_bodyParser.default.urlencoded({
 app.use(_bodyParser.default.json());
 var PORT = process.env.PORT || 3000;
 app.use('/api/v1', _parties.default);
-app.use('/api/v1', _offices.default);
+app.use('/api/v1', _offices.default); // app.use('/api/v1', userRoutes);
+
 app.listen(PORT, function () {
   console.log("Server is running on port ".concat(PORT));
 });

@@ -7,6 +7,8 @@ exports.default = void 0;
 
 var _parties = _interopRequireDefault(require("../db/parties"));
 
+var _db = _interopRequireDefault(require("../models/db"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var partyController = {
@@ -22,26 +24,27 @@ var partyController = {
         status: 400,
         error: 'Kindly enter all fields'
       });
-    } // generate id
+    }
 
+    var text = 'INSERT INTO party (name, hqAddress, logourl) VALUES ($1, $2, $3) RETURNING * ';
+    var values = [name, hqAddress, logoUrl];
 
-    var id = _parties.default.length + 1;
-    req.body.id = id; // insert record into db
-
-    _parties.default.push(req.body); // now format response to be sent
-
-
-    var response = {
-      status: 201,
-      data: [_parties.default[id - 1]]
-    };
-    return res.send(response);
+    _db.default.query(text, values).then(function (party) {
+      return res.status(201).send({
+        data: [party.rows[0]]
+      });
+    }).catch(function (err) {
+      return res.send(err);
+    });
   },
   getParties: function getParties(req, res) {
-    // send all the parties inside the partyDb object as response
-    return res.send({
-      status: 200,
-      data: _parties.default
+    var text = 'SELECT * FROM party';
+
+    _db.default.query(text).then(function (party) {
+      return res.send({
+        status: 200,
+        data: party.rows[0]
+      });
     });
   },
   getParty: function getParty(req, res) {

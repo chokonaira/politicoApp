@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "build": "babel app --out-dir ./dist --source-maps",
-    "dev": "nodemon --exec babel-node ./app/server.js",
+    "dev": "nodemon ./app/server.js --exec babel-node",
     "lint": "./node_modules/.bin/eslint ./app --fix",
-    "start": "npm run build && node ./dist/server.js ",
+    "start": "npm run migrate && babel-node ./app/server.js ",
     "test": "mocha --compilers js:@babel/register app/test/*.js --exit",
-    "migrate": "babel-node app/migration/create.js"
+    "migrate": "babel-node app/migration/create.js --exit"
   },
   "repository": {
     "type": "git",

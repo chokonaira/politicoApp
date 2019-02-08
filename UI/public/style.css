@@ -1,6 +1,6 @@
 body
 {
- margin:0 auto;
+ margin: auto;
  padding:0px;
  text-align:center;
  width:100%;
@@ -26,6 +26,7 @@ body
   overflow: hidden;
   background-color: #34A853;
   padding: 20px 10px;
+  margin-bottom: 50px;
 }
 
 .header a {
@@ -36,7 +37,7 @@ body
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 25px; 
+  font-size: 20px; 
   line-height: 25px;
   border-radius: 4px;
 }
@@ -217,17 +218,18 @@ width:80%;
 
 /* =================================================Table========================================================= */
 .dashboard{ 
-  width: 60%;
-  margin: 100px auto;
+  width: 50%;;
+  margin: auto;
+  margin-inline-end: 30%;
 }
 .dashboard h1{ 
-  font-size: 17px;
+  font-size: 15px;
 }
-table.table { width: 100%; }
+table.table { width: 100%;}
 
 .table td { 
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   text-align: center; 
   padding: 15px;
 }

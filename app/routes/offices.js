@@ -1,11 +1,14 @@
 import express from 'express';
 import officeController from '../controller/offices';
+import AuthValidator from '../middleware/auth'
+
+const { secureRoute } = AuthValidator
 
 const router = express.Router();
 
-router.post('/offices', officeController.createOffice);
-router.get('/offices', officeController.getOffices);
-router.get('/offices/:officeId', officeController.getOffice);
+router.post('/offices', secureRoute, officeController.createOffice);
+router.get('/offices', secureRoute, officeController.getOffices);
+router.get('/offices/:officeId', secureRoute, officeController.getOffice);
 
 
 export default router;

@@ -1,4 +1,3 @@
-import partyDb from '../db/parties';
 import db from '../models/db'
 
 const partyController = {
@@ -34,7 +33,7 @@ const partyController = {
           status: 200, data: [rows],
         });
       }
-      return res.status(400).json({ status: 400, data: [] });
+      return res.status(200).json({ status: 200, data: [] });
     } catch (e) {
       return res.status(500).json({ status: 500, message: 'Internal server error' });
     } finally {
@@ -93,8 +92,8 @@ const partyController = {
       let party = await dbClient.query({ text, values })
       if (party.rowCount) {
         const { rows } = party
-        return res.status(203).json({
-          status: 200, data: [{ message: 'Party deleted succesfully' }]
+        return res.status(204).json({
+          status: 204, data: [{ message: 'Party deleted succesfully' }]
         });
       }
       return res.status(400).json({ status: 400, message: `No party with id: ${partyId} was found` });
